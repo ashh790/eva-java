@@ -1,0 +1,9 @@
+package com.hospital.staff.doctor.salary;
+import com.hospital.staff.doctor.salary.*;
+
+public class Import extends Salary{
+	public static void main(String[]args) {
+		Import import1 =new Import();
+		import1.calSal(50000, 45000);
+	}
+}

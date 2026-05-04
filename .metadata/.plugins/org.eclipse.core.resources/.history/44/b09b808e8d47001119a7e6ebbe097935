@@ -1,0 +1,44 @@
+package q27;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+
+public class Delete extends JFrame {
+    JLabel l1;
+    JTextField t1;
+    JButton button;
+
+    public Delete() {
+        setLayout(new FlowLayout());
+        
+        l1 = new JLabel("Enter ID to Delete");
+        t1 = new JTextField(20);
+        button = new JButton("Delete");
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int id = Integer.parseInt(t1.getText());
+
+                Pojo pojo = new Pojo();
+                pojo.setId(id);
+
+                Operation operation = new Operation();
+                operation.DeleteData(pojo);
+            }
+        });
+
+        add(l1);
+        add(t1);
+        add(button);
+
+        setSize(400, 400);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new Delete();  
+    }
+}

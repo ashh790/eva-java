@@ -1,0 +1,89 @@
+package q28;
+
+
+import java.awt.Button;
+import java.awt.FlowLayout;
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class Login extends JFrame {
+	JLabel l1,l2;
+	JTextField t1,t2;
+	JButton btn1,btn2;
+	
+	public Login() {
+		setTitle("Login Page");
+		setLayout(new FlowLayout());
+		
+		l1 = new JLabel("Username");
+		l2 = new JLabel("Password");
+		
+		t1=new JTextField(20);
+		t2=new JTextField(20);
+		
+		btn1 = new JButton("Submit");
+		btn1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				try {
+					ResultSet set=Connection.getConnection().prepareStatement("Select * from momo").executeQuery();
+					set.next();
+					
+					String u = set.getString(1);
+					String p = set.getString(2);
+					
+					if(t1.getText().equals(u)&& t2.getText().equals(p)) {
+						System.out.println("Login Success");
+						dispose();
+					}else {
+							System.out.println("Login Failed");
+						}
+			
+			
+		}catch(SQLException e1) {
+			e1.printStackTrace();
+				}
+			}
+		});
+		
+		 btn2 = new JButton("Reset Password");
+		 btn2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Reset Password");
+				
+			}
+		});		
+		 
+		 add(l1);
+		 add(t1);
+		 add(l2);
+		 add(t2);
+		 add(btn1);
+		 add(btn2);
+		 
+		 setSize(400,400);
+		 setVisible(true);
+	}
+	
+	
+
+	public static void main(String[] args) {
+		new Login();
+	
+		
+	}
+
+}

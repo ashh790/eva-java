@@ -1,0 +1,7 @@
+package com.hospital.staff.doctor.salary;
+
+public class DirectAccess extends com.hospital.staff.doctor.salary{
+	DirectAccess access=new DirectAccess();
+	
+
+}

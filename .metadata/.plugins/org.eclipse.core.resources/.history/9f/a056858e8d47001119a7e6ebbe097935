@@ -1,0 +1,72 @@
+package q27;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+public class Operation  {
+	public void insertData1(Pojo pojo) {
+		try {
+			PreparedStatement preparedStatement =GetConnection.getConnection().prepareStatement("insert into jojo values(?,?,?,?)");
+			preparedStatement.setInt(1,pojo.getId());
+			preparedStatement.setString(2, pojo.getName());
+			preparedStatement.setString(3, pojo.getAddress());
+			preparedStatement.setString(4, pojo.getDept());
+			
+			preparedStatement.executeUpdate();
+			System.out.println("Data inserted Sucessfully");
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+		}
+	}
+	public void UpdateData1(Pojo pojo) {
+		try {
+			PreparedStatement preparedStatement =GetConnection.getConnection().prepareStatement("Update jojo set name=?,address=?,dept=? where id=?");
+			preparedStatement.setString(1,pojo.getName());
+			preparedStatement.setString(2,pojo.getAddress());
+			preparedStatement.setString(3,pojo.getDept());
+			preparedStatement.setInt(4,pojo.getId());
+			
+			preparedStatement.executeUpdate();
+			System.out.println("Data Updated Sucessfully");
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+		}
+	}
+	public void DeleteData(Pojo pojo ) {
+		try {
+			PreparedStatement preparedStatement =GetConnection .getConnection().prepareStatement("Delete from jojo where id=?");
+			preparedStatement.setInt(1,pojo.getId());
+			preparedStatement.executeUpdate();
+			System.out.println("Data Deleted Sucessfully");
+		}catch(Exception e) {
+			e.printStackTrace();
+			System.out.println(e);
+		}
+		
+	}
+	
+	public void ShowData() {
+	    try {
+	        PreparedStatement preparedStatement = GetConnection.getConnection()
+	                .prepareStatement("Select * from jojo");
+
+	        ResultSet resultSet = preparedStatement.executeQuery();
+
+	        while (resultSet.next()) {
+	            int id = resultSet.getInt("id");
+	            String name = resultSet.getString("name");
+	            String address = resultSet.getString("address");
+	            String dept = resultSet.getString("dept");
+
+	            System.out.println("ID: " + id + ", Name: " + name + ", Address: " + address + ", Dept: " + dept);
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	        System.out.println(e);
+	    }
+	}
+	
+
+}

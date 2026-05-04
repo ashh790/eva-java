@@ -1,0 +1,121 @@
+package q27;
+
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import java.sql.*;
+
+public class jojoapp extends JFrame {
+    JLabel l1, l2, l3, l4;
+    JTextField t1, t2, t3, t4;
+    JButton insertBtn, updateBtn, deleteBtn, showBtn;
+    JTextArea textArea;
+
+    public jojoapp() {
+        setTitle("Employee System");
+        setLayout(new FlowLayout());
+
+        l1 = new JLabel("ID:");
+        t1 = new JTextField(10);
+        l2 = new JLabel("Name:");
+        t2 = new JTextField(15);
+        l3 = new JLabel("Address:");
+        t3 = new JTextField(15);
+        l4 = new JLabel("Dept:");
+        t4 = new JTextField(15);
+
+        insertBtn = new JButton("Insert");
+        updateBtn = new JButton("Update");
+        deleteBtn = new JButton("Delete");
+        showBtn = new JButton("Show All");
+
+        textArea = new JTextArea(10, 40);
+        textArea.setEditable(false);
+
+        add(l1); add(t1);
+        add(l2); add(t2);
+        add(l3); add(t3);
+        add(l4); add(t4);
+
+        add(insertBtn);
+        add(updateBtn);
+        add(deleteBtn);
+        add(showBtn);
+        add(new JScrollPane(textArea));
+
+        Operation operation = new Operation();
+
+        insertBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Pojo pojo = new Pojo();
+                    pojo.setId(Integer.parseInt(t1.getText()));
+                    pojo.setName(t2.getText());
+                    pojo.setAddress(t3.getText());
+                    pojo.setDept(t4.getText());
+                    operations.insertData(pojo);
+                } catch (Exception ex) {
+                    System.out.println("Error: " + ex.getMessage());
+                }
+            }
+        });
+
+     
+        updateBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Pojo pojo = new Pojo();
+                    pojo.setId(Integer.parseInt(t1.getText()));
+                    pojo.setName(t2.getText());
+                    pojo.setAddress(t3.getText());
+                    pojo.setDept(t4.getText());
+                    operations.UpdateData(pojo);
+                } catch (Exception ex) {
+                    System.out.println("Error: " + ex.getMessage());
+                }
+            }
+        });
+
+       
+        deleteBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Pojo pojo = new Pojo();
+                    pojo.setId(Integer.parseInt(t1.getText()));
+                    operations.DeleteData(pojo);
+                } catch (Exception ex) {
+                    System.out.println("Error: " + ex.getMessage());
+                }
+            }
+        });
+
+       
+        showBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    Connection connection = GetConnection.getConnection();
+                    PreparedStatement ps = connection.prepareStatement("SELECT * FROM jojo");
+                    ResultSet rs = ps.executeQuery();
+
+                    while (rs.next()) {
+                        int id = rs.getInt("id");
+                        String name = rs.getString("name");
+                        String address = rs.getString("address");
+                        String dept = rs.getString("dept");
+
+                        textArea.append("ID: " + id + "  Name: " + name + "  Address: " + address + "  Dept: " + dept + "\n");
+                    }
+                } catch (Exception ex) {
+                    System.out.println("Error: " + ex.getMessage());
+                }
+            }
+        });
+
+        setSize(500, 450);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        new jojoApp();
+    }
+}

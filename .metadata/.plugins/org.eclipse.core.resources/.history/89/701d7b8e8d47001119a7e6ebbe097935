@@ -1,0 +1,67 @@
+package q27;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class Update extends JFrame{
+	JLabel l1,l2,l3,l4;
+	JTextField t1,t2,t3,t4;
+	JButton button;
+	
+	public Update() {
+		setLayout(new FlowLayout());
+		
+		l1=new JLabel("Id");
+		t1=new JTextField(20);
+		l2=new JLabel("Name");
+		t2=new JTextField(20);
+		l3=new JLabel("Address");
+		t3=new JTextField(20);
+		l4=new JLabel("Dept");
+		t4=new JTextField(20);
+		button= new JButton("Submit");
+		button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int id =Integer.parseInt(t1.getText());
+				String name =t2.getText();
+				String address=t3.getText();
+				String dept =t4.getText();
+				
+				Pojo pojo = new Pojo();
+				pojo.setId(id);
+				pojo.setName(name);
+				pojo.setAddress(address);
+				pojo.setDept(dept);
+				
+				Operation operation = new Operation();
+				operation.UpdateData1(pojo);
+			}
+		});
+		add(l1);
+		add(t1);
+		add(l2);
+		add(t2);
+		add(l3);
+		add(t3);
+		add(l4);
+		add(t4);
+		add(button);
+		setSize(400,400);
+		setVisible(true);
+		
+		
+	}
+
+	public static void main(String[] args) {
+		new Update();
+	}
+
+}

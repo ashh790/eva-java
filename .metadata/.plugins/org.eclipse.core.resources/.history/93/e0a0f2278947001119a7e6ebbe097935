@@ -1,0 +1,11 @@
+package acessspecifiier;
+
+
+public class Main2{
+	public static void main(String[] args) {
+		Main man = new Main();
+		System.out.println(man.a);
+		System.out.println(man.c);
+		System.out.println(man.d);
+	}
+}

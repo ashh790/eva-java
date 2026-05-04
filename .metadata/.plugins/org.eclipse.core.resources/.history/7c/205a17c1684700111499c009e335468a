@@ -1,0 +1,47 @@
+package q3;
+
+class Salary{
+	int id;
+
+	class Bank{
+		public double getRateofInterest() {
+			return 0;
+		}
+	}
+	class SBI extends Bank{
+		public double getRateofInterest() {
+			return 6.0;
+		}
+	}
+	class ICICI extends Bank{
+		public double getRateofInterest() {
+			return 7.0;
+		}
+	}
+	class Axis extends Bank{
+		public double getRateofInterest() {
+			return 8.0;
+		}
+	}
+
+
+public class Main {
+		public static void main(String[] args) {
+			Bank bank;
+			bank =new SBI();
+			System.out.println(bank.getRateofInterest());
+			bank=new ICICI();
+			System.out.println(bank.getRateofInterest());
+			bank= new ICICI();
+			System.out.println(bank.getRateofInterest());
+			bank=new Axis();
+			System.out.println(bank.getRateofInterest());
+		}
+}
+			
+
+		}
+	}
+
+
+	

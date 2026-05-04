@@ -1,0 +1,21 @@
+package operation;
+
+import devs.Dev1;
+import devs.Dev2;
+import devs.Dev3;
+import devs.Dev4;
+
+public class Main {
+	public static void main(String[] args) {
+		Dev1 dev1 =new Dev1();
+		dev1.insertdata();
+		Dev2 dev2=new Dev2();
+		dev2.updatedata();
+		Dev3 dev3 = new Dev3();
+		dev3.deletedata();
+		Dev4 dev4 = new Dev4();
+		dev4.showdata();
+			
+	}
+}
+
