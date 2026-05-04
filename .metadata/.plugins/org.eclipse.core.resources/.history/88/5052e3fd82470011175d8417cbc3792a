@@ -1,0 +1,38 @@
+package q29;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import q28.Connection;
+
+public class Operation {
+	public void SubmitData(Pojo pojo) {
+		
+try {
+	 PreparedStatement preparedStatement = Connection.getConnection().prepareStatement("Insert into gogo values(?,?,?,?,?,?)");
+		preparedStatement.setString(1, pojo.getName());
+		preparedStatement.setFloat(2,pojo.getContact());
+		preparedStatement.setFloat(3,pojo.getMobile());
+		preparedStatement.setString(4,pojo.getGender());
+		preparedStatement.setString(5,pojo.getCity());
+		preparedStatement.setString(6,pojo.getComment());
+		preparedStatement.executeUpdate();
+		System.out.println("Data Submitted SuccessFully");
+			} catch (SQLException e) {
+				e.printStackTrace();
+				System.out.println(e);
+			}
+	}
+	public void DeleteData(Pojo pojo) {
+		try {
+		PreparedStatement preparedStatement =Connection.getConnection().prepareStatement("Delete from gogo where name=?");
+		preparedStatement.setString(1,pojo.getName());
+		preparedStatement.executeUpdate();
+		System.out.println("Data Deleted Successfully");
+	}catch(SQLException e) {
+		e.printStackTrace();
+		System.out.println(e);
+	}
+	}
+
+}

@@ -1,0 +1,8 @@
+package q18;
+
+public class Main {
+	int a=10;
+	int b =20;
+	
+
+}

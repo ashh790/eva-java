@@ -1,0 +1,12 @@
+package q4;
+
+import q4.Tl;
+
+public class Dev1 extends Tl {
+	@Override
+	public void insertdata() {
+		
+		System.out.println("insert data ");
+	}
+
+}

@@ -1,0 +1,38 @@
+package q27;
+
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class Show extends JFrame {
+	JButton button ;
+	
+	public void showData() {
+		setLayout(new FlowLayout());
+		
+		button=new JButton("Submit");
+		button.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Operation operation = new Operation();
+				operation.ShowData();
+				
+			}
+		});
+		
+		add(button);
+		setSize(400,400);
+		setVisible(true);
+	}
+
+	public static void main(String[] args) {
+		new Show().showData();
+		
+
+	}
+
+}

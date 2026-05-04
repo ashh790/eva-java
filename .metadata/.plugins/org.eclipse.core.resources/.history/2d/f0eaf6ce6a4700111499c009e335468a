@@ -1,0 +1,10 @@
+package q4;
+
+public class Dev1 extends Tl {
+	@Override
+	public void showdata() {
+		
+		System.out.println("show data ");
+	}
+
+}

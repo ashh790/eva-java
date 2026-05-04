@@ -1,0 +1,30 @@
+package q16;
+
+class Manager {
+	String task;
+	public Manager(String task) {
+		this.task=task;
+		System.out.println("parent constructor....");
+	}
+	public String displayTask() {
+		return task;
+	}
+}
+class Emp extends Manager{
+	public Emp(String task) {
+		super(task);
+	}
+	public void displayWork() {
+		System.out.println("Task :"+super.displayTask());
+		System.out.println(super.task);
+	}
+	
+}
+
+public class Main {
+
+	public static void main(String[] args) {
+		Emp emp = new Emp("mail reply");
+		emp.displayWork();
+
+	}

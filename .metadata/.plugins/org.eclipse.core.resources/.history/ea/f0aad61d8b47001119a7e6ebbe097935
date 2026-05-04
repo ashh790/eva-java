@@ -1,0 +1,47 @@
+package q5;
+
+import java.util.Objects;
+
+class Emp2{
+	String name;
+
+	@Override
+	public String toString() {
+		return "Emp [name=" + name + "]";
+	}
+
+	public Emp2(String name) {
+		super();
+		this.name = name;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(name);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Emp other = (Emp) obj;
+		return Objects.equals(name, other.name);
+	}
+	
+}
+
+
+public class Main2 {
+
+	public static void main(String[] args) {
+		Emp2 emp2  = new Emp2("Ash");
+		Emp emp2 = new Emp("Ash");
+		System.out.println(emp.equals(emp2));
+
+	}
+
+}

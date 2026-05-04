@@ -1,0 +1,37 @@
+package overnoverloadin;
+
+class Acc {
+	void calculatesalary(int sal) {
+		System.out.println(sal);
+	}
+
+	void calculatesalary(int sal, int bonus) {
+		System.out.println(sal + bonus);
+	}
+}
+
+class Emp extends Acc {
+	@Override
+	void calculatesalary(int sal) {
+		System.out.println(sal);
+	}
+	void calculatesalary(int sal, int bonus) {
+		System.out.println(sal+bonus);
+	}
+}
+public class Main {
+	public static void main(String[] args) {
+		Acc ob1 = new Acc();
+		ob1.calculatesalary(25000);
+		ob1.calculatesalary(25000,5000);
+		
+		System.out.println("\n");
+		
+		Emp ob2 =new Emp();
+		ob2.calculatesalary(25000);
+		ob2.calculatesalary(25000, 6000);
+		
+
+	}
+
+}
